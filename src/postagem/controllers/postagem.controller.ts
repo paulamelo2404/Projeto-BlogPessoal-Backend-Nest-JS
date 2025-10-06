@@ -11,13 +11,15 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { Postagem } from '../entities/postagem.entity';
 import { PostagemService } from '../services/postagem.service';
 
-// Aplica o Guard JWT a todo o Controller, exigindo um token válido para acesso
-@UseGuards(JwtAuthGuard)
+@ApiTags('Postagem')
+@UseGuards(JwtAuthGuard) // Aplica o Guard JWT a todo o Controller, exigindo um token válido para acesso
 @Controller('/postagens') // Define o endpoint base da API: /postagens
+@ApiBearerAuth()
 export class PostagemController {
   constructor(private readonly postagemService: PostagemService) {}
 

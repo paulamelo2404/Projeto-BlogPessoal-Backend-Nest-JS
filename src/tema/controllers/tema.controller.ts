@@ -11,6 +11,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { Tema } from '../entities/tema.entity';
 import { TemaService } from '../services/tema.service';
@@ -18,6 +19,7 @@ import { TemaService } from '../services/tema.service';
 // Aplica o Guard JWT a todas as rotas deste Controller, exigindo token de autenticação
 @UseGuards(JwtAuthGuard)
 @Controller('/temas') // Define o endpoint base da API: /temas
+@ApiBearerAuth()
 export class TemaController {
   constructor(private readonly temaService: TemaService) {}
 

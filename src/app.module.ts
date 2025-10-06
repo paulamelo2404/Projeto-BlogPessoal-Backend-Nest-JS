@@ -7,6 +7,7 @@ import { Tema } from './tema/entities/tema.entity';
 import { TemaModule } from './tema/tema.module';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
+import { AppController } from './app.controller';
 
 // conexao com o banco de dados atraves de TypeORM
 @Module({
@@ -20,7 +21,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       database: 'db_blogpessoal',
       entities: [Postagem, Tema, Usuario],
       synchronize: true,
-      // logging: true, //opcional
+      logging: true, //opcional
     }),
 
     PostagemModule,
@@ -28,7 +29,7 @@ import { UsuarioModule } from './usuario/usuario.module';
     AuthModule,
     UsuarioModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
