@@ -39,6 +39,7 @@ describe('Testes dos Módulos Usuario e Auth (e2e)', () => {
     await app.close();
   });
 
+  //testes começam aqui
   it('01 - Deve Cadastrar um novo Usuário', async () => {
     const resposta = await request(app.getHttpServer())
       .post('/usuarios/cadastrar')
@@ -77,7 +78,6 @@ describe('Testes dos Módulos Usuario e Auth (e2e)', () => {
     token = resposta.body.token;
   });
 
-  //testes começam aqui
   it('04 - Deve Listar todos os Usuários', async () => {
     return request(app.getHttpServer())
       .get('/usuarios/all')
